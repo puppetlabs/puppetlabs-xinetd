@@ -10,6 +10,7 @@ service <%= name %>
         user            = <%= user %>
         group           = <%= group %>
         server          = <%= server %>
+        bind            = <%= bind %>
 <% if server_args != :undef %>        server_args     = <%= server_args %><% end %>
 <% if per_source != :undef %>        per_source      = <%= per_source %><% end %>
 <% if cps != :undef %>        cps             = <%= cps %><% end %>
