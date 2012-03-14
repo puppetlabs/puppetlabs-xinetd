@@ -50,7 +50,7 @@ class xinetd {
     #       per_source  => "11",
     #   } # xinetd::service
     #
-    define service ($cps = undef, $flags = undef, $per_source = undef, $port, $server, $server_args = undef, $disable = "no", $socket_type = "stream", $protocol = "tcp", $user = "root", $group = "root", $instances = "UNLIMITED", $wait = undef) {
+    define service ($cps = undef, $flags = undef, $per_source = undef, $port, $server, $server_args = undef, $disable = "no", $socket_type = "stream", $protocol = "tcp", $user = "root", $group = "root", $instances = "UNLIMITED", $wait = undef, $bind = '0.0.0.0') {
         if $wait {
             $mywait = $wait
         } else {
