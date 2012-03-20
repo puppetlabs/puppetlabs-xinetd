@@ -7,7 +7,7 @@ This is the xinetd module.
 # sets up a xinetd service
 # all parameters match up with xinetd.conf(5) man page
 #
-# Parameters:   
+# Parameters:
 #   $cps         - optional
 #   $flags       - optional
 #   $per_source  - optional
