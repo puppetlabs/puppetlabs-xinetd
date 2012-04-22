@@ -39,7 +39,7 @@
 #     per_source  => '11',
 #   } # xinetd::service
 #
-define service (
+define xinetd::service (
   $port,
   $server,
   $cps         = undef,
