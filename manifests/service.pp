@@ -5,20 +5,23 @@
 #
 # Parameters:
 #   $port           - required - determines the service port
-#   $server         - required - determines the program to execute for this service
+#   $server         - required - determines the executable for this service
 #   $ensure         - optional - defaults to 'present'
 #   $cps            - optional
 #   $flags          - optional
 #   $per_source     - optional
 #   $server_args    - optional
-#   $log_on_failure - optional, may contain any combination of 'HOST', 'USERID', 'ATTEMPT'
+#   $log_on_failure - optional - may contain any combination of
+#                                 'HOST', 'USERID', 'ATTEMPT'
 #   $disable        - optional - defaults to 'no'
 #   $socket_type    - optional - defaults to 'stream'
 #   $protocol       - optional - defaults to 'tcp'
 #   $user           - optional - defaults to 'root'
 #   $group          - optional - defaults to 'root'
 #   $instances      - optional - defaults to 'UNLIMITED'
-#   $wait           - optional - based on $protocol will default to 'yes' for udp and 'no' for tcp
+#   $wait           - optional - based on $protocol
+#                                 will default to 'yes' for udp
+#                                 and 'no' for tcp
 #   $bind           - optional - defaults to '0.0.0.0'
 #
 # Actions:
