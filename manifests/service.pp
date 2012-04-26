@@ -6,6 +6,7 @@
 # Parameters:
 #   $port           - required - determines the service port
 #   $server         - required - determines the program to execute for this service
+#   $ensure         - optional - defaults to 'present'
 #   $cps            - optional
 #   $flags          - optional
 #   $per_source     - optional
@@ -43,6 +44,7 @@
 define xinetd::service (
   $port,
   $server,
+  $ensure         = present,
   $cps            = undef,
   $flags          = undef,
   $log_on_failure = undef,
@@ -68,6 +70,7 @@ define xinetd::service (
   }
 
   file { "/etc/xinetd.d/${name}":
+    ensure  => $ensure,
     content => template('xinetd/service.erb'),
     notify  => Service['xinetd'],
   }
