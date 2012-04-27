@@ -15,7 +15,7 @@ class xinetd {
   package { $xinetd::params::xinetd_package: }
 
   file { $xinetd::params::xinetd_conffile:
-    source => 'puppet:///modules/xinetd/xinetd.conf',
+    content => template('xinetd/xinetd.conf.erb'),
   }
 
   service { $xinetd::params::xinetd_service:
