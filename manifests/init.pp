@@ -10,18 +10,19 @@
 #  }
 #
 class xinetd {
+  include xinetd::params
 
-  package { 'xinetd': }
+  package { $xinetd::params::xinetd_package: }
 
-  file { '/etc/xinetd.conf':
+  file { $xinetd::params::xinetd_conffile:
     source => 'puppet:///modules/xinetd/xinetd.conf',
   }
 
-  service { 'xinetd':
+  service { $xinetd::params::xinetd_service:
     ensure  => running,
     enable  => true,
     restart => '/etc/init.d/xinetd reload',
-    require => [ Package['xinetd'],
-                File['/etc/xinetd.conf'] ],
+    require => [ Package[$xinetd::params::xinetd_package],
+                 File[$xinetd::params::xinetd_conffile] ],
   }
 }
