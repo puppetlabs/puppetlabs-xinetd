@@ -12,17 +12,35 @@
 class xinetd {
   include xinetd::params
 
-  package { $xinetd::params::xinetd_package: }
+  File {
+    owner   => 'root',
+    group   => '0',
+    notify  => Service[$xinetd::params::xinetd_service],
+    require => Package[$xinetd::params::xinetd_service],
+  }
+
+  file { $xinetd::params::xinetd_confdir:
+    ensure  => directory,
+    mode    => '0755',
+  }
 
   file { $xinetd::params::xinetd_conffile:
+    ensure  => file,
+    mode    => '0644',
     content => template('xinetd/xinetd.conf.erb'),
   }
 
-  service { $xinetd::params::xinetd_service:
-    ensure  => running,
-    enable  => true,
-    restart => '/etc/init.d/xinetd reload',
-    require => [ Package[$xinetd::params::xinetd_package],
-                 File[$xinetd::params::xinetd_conffile] ],
+  package { $xinetd::params::xinetd_package:
+    ensure => installed,
+    before => Service[$xinetd::params::xinetd_service],
   }
+
+  service { $xinetd::params::xinetd_service:
+    ensure     => running,
+    enable     => true,
+    hasrestart => true,
+    hasstatus  => true,
+    require    => File[$xinetd::params::xinetd_conffile],
+  }
+
 }
