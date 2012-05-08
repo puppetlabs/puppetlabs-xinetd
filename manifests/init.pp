@@ -16,7 +16,7 @@ class xinetd {
     owner   => 'root',
     group   => '0',
     notify  => Service[$xinetd::params::xinetd_service],
-    require => Package[$xinetd::params::xinetd_service],
+    require => Package[$xinetd::params::xinetd_package],
   }
 
   file { $xinetd::params::xinetd_confdir:
