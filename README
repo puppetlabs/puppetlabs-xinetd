@@ -8,19 +8,20 @@ This is the xinetd module.
 # all parameters match up with xinetd.conf(5) man page
 #
 # Parameters:
-#   $cps         - optional
-#   $flags       - optional
-#   $per_source  - optional
-#   $port        - required - determines the service port
-#   $server      - required - determines the program to execute for this service
-#   $server_args - optional
-#   $disable     - optional - defaults to "no"
-#   $socket_type - optional - defaults to "stream"
-#   $protocol    - optional - defaults to "tcp"
-#   $user        - optional - defaults to "root"
-#   $group       - optional - defaults to "root"
-#   $instances   - optional - defaults to "UNLIMITED"
-#   $wait        - optional - based on $protocol will default to "yes" for udp and "no" for tcp
+#   $cps          - optional
+#   $flags        - optional
+#   $per_source   - optional
+#   $port         - required - determines the service port
+#   $server       - required - determines the program to execute for this service
+#   $server_args  - optional
+#   $disable      - optional - defaults to "no"
+#   $socket_type  - optional - defaults to "stream"
+#   $protocol     - optional - defaults to "tcp"
+#   $user         - optional - defaults to "root"
+#   $group        - optional - defaults to "root"
+#   $instances    - optional - defaults to "UNLIMITED"
+#   $wait         - optional - based on $protocol will default to "yes" for udp and "no" for tcp
+#   $service_type - optional - type setting in xinetd
 #
 # Actions:
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/

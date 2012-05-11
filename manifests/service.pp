@@ -5,20 +5,26 @@
 #
 # Parameters:
 #   $port           - required - determines the service port
-#   $server         - required - determines the program to execute for this service
+#   $server         - required - determines the executable for this service
+#   $ensure         - optional - defaults to 'present'
 #   $cps            - optional
 #   $flags          - optional
 #   $per_source     - optional
 #   $server_args    - optional
-#   $log_on_failure - optional, may contain any combination of 'HOST', 'USERID', 'ATTEMPT'
+#   $log_on_failure - optional - may contain any combination of
+#                       'HOST', 'USERID', 'ATTEMPT'
 #   $disable        - optional - defaults to 'no'
 #   $socket_type    - optional - defaults to 'stream'
 #   $protocol       - optional - defaults to 'tcp'
 #   $user           - optional - defaults to 'root'
 #   $group          - optional - defaults to 'root'
 #   $instances      - optional - defaults to 'UNLIMITED'
-#   $wait           - optional - based on $protocol will default to 'yes' for udp and 'no' for tcp
+#   $wait           - optional - based on $protocol
+#                       will default to 'yes' for udp and 'no' for tcp
 #   $bind           - optional - defaults to '0.0.0.0'
+#   $service_type   - optional - type setting in xinetd
+#                       may contain any combinarion of 'RPC', 'INTERNAL',
+#                       'TCPMUX/TCPMUXPLUS', 'UNLISTED'
 #
 # Actions:
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/
@@ -43,6 +49,7 @@
 define xinetd::service (
   $port,
   $server,
+  $ensure         = present,
   $cps            = undef,
   $flags          = undef,
   $log_on_failure = undef,
@@ -55,7 +62,8 @@ define xinetd::service (
   $group          = 'root',
   $instances      = 'UNLIMITED',
   $wait           = undef,
-  $bind           = '0.0.0.0'
+  $bind           = '0.0.0.0',
+  $service_type   = undef
 ) {
 
   if $wait {
@@ -68,6 +76,7 @@ define xinetd::service (
   }
 
   file { "/etc/xinetd.d/${name}":
+    ensure  => $ensure,
     content => template('xinetd/service.erb'),
     notify  => Service['xinetd'],
   }

@@ -22,6 +22,6 @@ class xinetd {
     enable  => true,
     restart => '/etc/init.d/xinetd reload',
     require => [ Package['xinetd'],
-                 File['/etc/xinetd.conf'] ],
+                File['/etc/xinetd.conf'] ],
   }
 }

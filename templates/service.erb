@@ -3,6 +3,7 @@
 
 service <%= name %>
 {
+        port            = <%= port %>
         disable         = <%= disable %>
         socket_type     = <%= socket_type %>
         protocol        = <%= protocol %>
@@ -16,4 +17,5 @@ service <%= name %>
 <% if log_on_failure != :undef %>       log_on_failure      += <%= log_on_failure %><% end %>
 <% if cps != :undef %>        cps             = <%= cps %><% end %>
 <% if flags != :undef %>        flags           = <%= flags %><% end %>
+<% if service_type != :undef %>        type     = <%= service_type %><% end %>
 }
