@@ -38,7 +38,7 @@ class xinetd {
   service { $xinetd::params::xinetd_service:
     ensure     => running,
     enable     => true,
-    hasrestart => true,
+    hasrestart => false,
     hasstatus  => true,
     require    => File[$xinetd::params::xinetd_conffile],
   }
