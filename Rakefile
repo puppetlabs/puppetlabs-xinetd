@@ -1,2 +1,2 @@
-require 'rake'
-require 'puppet-lint/tasks/puppet-lint'
+require 'rubygems'
+require 'puppetlabs_spec_helper/rake_tasks'
