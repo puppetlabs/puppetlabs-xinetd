@@ -66,6 +66,8 @@ define xinetd::service (
   $service_type   = undef
 ) {
 
+  include xinetd
+
   if $wait {
     $mywait = $wait
   } else {
@@ -79,5 +81,6 @@ define xinetd::service (
     ensure  => $ensure,
     content => template('xinetd/service.erb'),
     notify  => Service['xinetd'],
+    require => Package['xinetd'],
   }
 }
