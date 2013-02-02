@@ -21,7 +21,7 @@
 #   $instances      - optional - defaults to 'UNLIMITED'
 #   $wait           - optional - based on $protocol
 #                       will default to 'yes' for udp and 'no' for tcp
-#   $recirect       - optional
+#   $redirect       - optional
 #   $bind           - optional - defaults to '0.0.0.0'
 #   $service_type   - optional - type setting in xinetd
 #                       may contain any combinarion of 'RPC', 'INTERNAL',
