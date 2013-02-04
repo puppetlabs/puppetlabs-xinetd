@@ -13,6 +13,9 @@
 #   $server_args    - optional
 #   $log_on_failure - optional - may contain any combination of
 #                       'HOST', 'USERID', 'ATTEMPT'
+#   $log_type       - optional - determines where the service log output is sent. There are two formats:
+#                       SYSLOG syslog_facility [syslog_level]
+#                       FILE file [soft_limit [hard_limit]]
 #   $disable        - optional - defaults to 'no'
 #   $socket_type    - optional - defaults to 'stream'
 #   $protocol       - optional - defaults to 'tcp'
@@ -53,6 +56,7 @@ define xinetd::service (
   $cps            = undef,
   $flags          = undef,
   $log_on_failure = undef,
+  $log_type       = undef,
   $per_source     = undef,
   $server_args    = undef,
   $disable        = 'no',
