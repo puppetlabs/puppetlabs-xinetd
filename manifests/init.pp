@@ -9,7 +9,7 @@
 #     server_args => '--daemon --config /etc/rsync.conf',
 #  }
 #
-class xinetd {
+class xinetd inherits xinetd::params  {
 
   package { 'xinetd': }
 
@@ -20,7 +20,7 @@ class xinetd {
   service { 'xinetd':
     ensure  => running,
     enable  => true,
-    restart => '/etc/init.d/xinetd reload',
+    restart => $::xinetd::params::xinetd_restart_command,
     require => [ Package['xinetd'],
                 File['/etc/xinetd.conf'] ],
   }
