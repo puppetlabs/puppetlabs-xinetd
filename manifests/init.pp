@@ -20,7 +20,7 @@ class xinetd {
   service { 'xinetd':
     ensure  => running,
     enable  => true,
-    restart => '/etc/init.d/xinetd reload',
+    restart => 'pkill -1 xinetd',
     require => [ Package['xinetd'],
                 File['/etc/xinetd.conf'] ],
   }
