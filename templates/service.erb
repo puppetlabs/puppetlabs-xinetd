@@ -12,6 +12,7 @@ service <%= name %>
         group           = <%= group %>
         server          = <%= server %>
         bind            = <%= bind %>
+<% if redirect != :undef %>        redirect        = <%= redirect %><% end %>
 <% if server_args != :undef %>        server_args     = <%= server_args %><% end %>
 <% if per_source != :undef %>        per_source      = <%= per_source %><% end %>
 <% if log_on_failure != :undef %>       log_on_failure      += <%= log_on_failure %><% end %>
