@@ -25,6 +25,7 @@
 #   $service_type   - optional - type setting in xinetd
 #                       may contain any combinarion of 'RPC', 'INTERNAL',
 #                       'TCPMUX/TCPMUXPLUS', 'UNLISTED'
+#   $only_from      - optional - only_from setting in xinetd.
 #
 # Actions:
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/
@@ -64,6 +65,7 @@ define xinetd::service (
   $wait           = undef,
   $bind           = '0.0.0.0',
   $service_type   = undef
+  $only_from      = undef
 ) {
 
   include xinetd
