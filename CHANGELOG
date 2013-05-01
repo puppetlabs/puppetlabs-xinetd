@@ -4,6 +4,7 @@
 - Uses Puppet's service management now (rather than /etc/init.d/xinetd)
 - Improved documentation
 - First version maintained by Alex Lowe <amlowe@ieee.org>
+- Removed outdated LICENSE file that referenced GPLv2
 
 * 2012-06-07 1.1.0
 - Add port and bind options to services
