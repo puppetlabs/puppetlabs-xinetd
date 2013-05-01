@@ -52,11 +52,11 @@ By itself, xinetd is pretty useless. However, it allows wonderful management of 
 -	`socket_type`	- Defaults to "stream"
 -	`protocol`		- Defaults to "tcp"
 -	`user`			- User to run as. Defaults to "root"
--	`group`		- Defaults to "root"
--	`instances`	- Number of instances. Defaults to "UNLIMITED"
+-	`group`			- Defaults to "root"
+-	`instances`		- Number of instances. Defaults to "UNLIMITED"
 -	`wait`			- Based on $protocol will default to "yes" for udp and "no" for tcp
 -	`service_type`	- Type setting in xinetd
--	`only_from`	- Remote hosts to which the service is made available.
+-	`only_from`		- Remote hosts to which the service is made available.
 
 Limitations
 ------------
