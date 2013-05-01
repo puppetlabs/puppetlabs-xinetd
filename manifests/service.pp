@@ -67,8 +67,8 @@ define xinetd::service (
   $redirect       = undef,
   $bind           = '0.0.0.0',
   $only_from      = undef,
-  $service_type   = undef
-  $only_from      = undef
+  $service_type   = undef,
+  $only_from      = undef,
 ) {
 
   include xinetd
