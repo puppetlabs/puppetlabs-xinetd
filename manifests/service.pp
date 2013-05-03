@@ -21,10 +21,12 @@
 #   $instances      - optional - defaults to 'UNLIMITED'
 #   $wait           - optional - based on $protocol
 #                       will default to 'yes' for udp and 'no' for tcp
+#   $redirect       - optional
 #   $bind           - optional - defaults to '0.0.0.0'
 #   $service_type   - optional - type setting in xinetd
 #                       may contain any combinarion of 'RPC', 'INTERNAL',
 #                       'TCPMUX/TCPMUXPLUS', 'UNLISTED'
+#   $only_from      - optional - remote hosts to which the service is available
 #
 # Actions:
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/
@@ -47,7 +49,7 @@
 #   } # xinetd::service
 #
 define xinetd::service (
-  $port,
+  $port           = undef,
   $server,
   $ensure         = present,
   $cps            = undef,
@@ -62,8 +64,11 @@ define xinetd::service (
   $group          = 'root',
   $instances      = 'UNLIMITED',
   $wait           = undef,
+  $redirect       = undef,
   $bind           = '0.0.0.0',
-  $service_type   = undef
+  $only_from      = undef,
+  $service_type   = undef,
+  $only_from      = undef,
 ) {
 
   include xinetd

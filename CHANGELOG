@@ -1,3 +1,12 @@
+* 2013-04-30 2.0
+- Added "only_from" option, to limit the locations allowed to access a service
+- Added "redirect" option, to redirect a port to a different port on the same or another computer
+- Uses Puppet's service management now (rather than /etc/init.d/xinetd)
+- Improved documentation
+- First version maintained by Alex Lowe <amlowe@ieee.org>
+- Removed outdated LICENSE file that referenced GPLv2
+- Made "port" optional.
+
 * 2012-06-07 1.1.0
 - Add port and bind options to services
 - make services deletable
