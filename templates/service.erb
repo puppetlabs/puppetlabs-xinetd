@@ -11,10 +11,10 @@ service <%= name %>
 	group		= <%= group %>
 	server		= <%= server %>
 	bind		= <%= bind %>
-<% if port != :undef %>
+<% if port != :undef -%>
 	port		= <%= port %>
 <% end -%>
-<% if redirect != :undef %>
+<% if redirect != :undef -%>
 	redirect	= <%= redirect %>
 <% end -%>
 <% if server_args != :undef -%>
