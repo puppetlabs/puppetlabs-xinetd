@@ -49,7 +49,7 @@
 #   } # xinetd::service
 #
 define xinetd::service (
-  $port,
+  $port           = undef,
   $server,
   $ensure         = present,
   $cps            = undef,
