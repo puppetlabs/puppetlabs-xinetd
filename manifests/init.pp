@@ -15,6 +15,8 @@ class xinetd {
 
   file { '/etc/xinetd.conf':
     source => 'puppet:///modules/xinetd/xinetd.conf',
+    owner  => 'root',
+    group  => 'root',
   }
 
   service { 'xinetd':
