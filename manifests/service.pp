@@ -56,7 +56,7 @@ define xinetd::service (
   $server,
   $ensure         = present,
   $log_on_failure = undef,
-  $service_type   = undef
+  $service_type   = undef,
   $service_name   = $title,
   $cps            = undef,
   $disable        = 'no',

@@ -12,10 +12,12 @@ service <%= @service_name %>
         group           = <%= @group %>
         groups          = <%= @groups %>
         server          = <%= @server %>
+<% if @bind -%>
         bind            = <%= @bind %>
-<% if @service_type %>
+<% end -%>
+<% if @service_type -%>
         type            = <%= @service_type %>
-<% end %>
+<% end -%>
 <% if @server_args -%>
         server_args     = <%= @server_args %>
 <% end -%>
@@ -45,8 +47,5 @@ service <%= @service_name %>
 <% end -%>
 <% if @log_type -%>
         log_type        = <%= @log_type %>
-<% end -%>
-<% if @bind -%>
-        bind            = <%= @bind %>
 <% end -%>
 }
