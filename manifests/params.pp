@@ -1,6 +1,6 @@
 class xinetd::params {
 
-  case $osfamily {
+  case $::osfamily {
     'Debian':  {
       $xinetd_confdir  = '/etc/xinetd.d'
       $xinetd_conffile = '/etc/xinetd.conf'
