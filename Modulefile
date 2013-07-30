@@ -1,5 +1,5 @@
 name    'puppetlabs-xinetd'
-version '1.1.0'
+version '1.2.0'
 source  'https://github.com/puppetlabs/puppetlabs-xinetd'
 author  'Puppet Labs'
 license 'Apache License 2.0'
