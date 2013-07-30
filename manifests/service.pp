@@ -40,15 +40,15 @@
 #
 # Sample Usage:
 #   # setup tftp service
-#   xinetd::service {"tftp":
-#       port        => "69",
-#       server      => "/usr/sbin/in.tftpd",
-#       server_args => "-s $base",
-#       socket_type => "dgram",
-#       protocol    => "udp",
-#       cps         => "100 2",
-#       flags       => "IPv4",
-#       per_source  => "11",
+#   xinetd::service { 'tftp':
+#     port        => '69',
+#     server      => '/usr/sbin/in.tftpd',
+#     server_args => '-s $base',
+#     socket_type => 'dgram',
+#     protocol    => 'udp',
+#     cps         => '100 2',
+#     flags       => 'IPv4',
+#     per_source  => '11',
 #   } # xinetd::service
 #
 define xinetd::service (
@@ -76,30 +76,50 @@ define xinetd::service (
   $no_access      = undef,
   $access_times   = undef,
   $log_type       = undef,
-  $bind           = undef
+  $bind           = undef,
 ) {
-  include xinetd
-  include xinetd::params
 
   include xinetd
 
   if $wait {
-    $wait_real = $wait
+    $_wait = $wait
   } else {
-    case $protocol {
-      'tcp':   { $wait_real = 'no'  }
-      'udp':   { $wait_real = 'yes' }
-      default: { fail('wait not set, unable to determine sane default') }
+    validate_re($protocol, '(tcp|udp)')
+    $_wait = $protocol ? {
+      tcp => 'no',
+      udp => 'yes'
     }
   }
 
-  file { "${xinetd::params::xinetd_confdir}/${title}":
+  # Template uses:
+  # - $port
+  # - $disable
+  # - $socket_type
+  # - $protocol
+  # - $_wait
+  # - $user
+  # - $group
+  # - $groups
+  # - $server
+  # - $bind
+  # - $service_type
+  # - $server_args
+  # - $only_from
+  # - $per_source
+  # - $log_on_failure
+  # - $cps
+  # - $flags
+  # - $xtype
+  # - $no_access
+  # - $access_types
+  # - $log_type
+  file { "${xinetd::confdir}/${title}":
     ensure  => $ensure,
     owner   => 'root',
     mode    => '0644',
     content => template('xinetd/service.erb'),
-    notify  => Service[$xinetd::params::xinetd_service],
-    require => File[$xinetd::params::xinetd_confdir],
+    notify  => Service[$xinetd::service_name],
+    require => File[$xinetd::confdir],
   }
 
 }

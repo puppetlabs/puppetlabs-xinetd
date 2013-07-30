@@ -9,38 +9,44 @@
 #     server_args => '--daemon --config /etc/rsync.conf',
 #  }
 #
-class xinetd {
-  include xinetd::params
+class xinetd (
+  $confdir       = $xinetd::params::confdir,
+  $conffile      = $xinetd::params::conffile,
+  $package_name  = $xinetd::params::package_name,
+  $service_name  = $xinetd::params::service_name
+) inherits xinetd::params {
 
   File {
     owner   => 'root',
     group   => '0',
-    notify  => Service[$xinetd::params::xinetd_service],
-    require => Package[$xinetd::params::xinetd_package],
+    notify  => Service[$service_name],
+    require => Package[$package_name],
   }
 
-  file { $xinetd::params::xinetd_confdir:
+  file { $confdir:
     ensure  => directory,
     mode    => '0755',
   }
 
-  file { $xinetd::params::xinetd_conffile:
+  # Template uses:
+  #   $confdir
+  file { $conffile:
     ensure  => file,
     mode    => '0644',
     content => template('xinetd/xinetd.conf.erb'),
   }
 
-  package { $xinetd::params::xinetd_package:
+  package { $package_name:
     ensure => installed,
-    before => Service[$xinetd::params::xinetd_service],
+    before => Service[$service_name],
   }
 
-  service { $xinetd::params::xinetd_service:
+  service { $service_name:
     ensure     => running,
     enable     => true,
     hasrestart => false,
     hasstatus  => true,
-    require    => File[$xinetd::params::xinetd_conffile],
+    require    => File[$conffile],
   }
 
 }

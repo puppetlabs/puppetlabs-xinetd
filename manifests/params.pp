@@ -2,31 +2,31 @@ class xinetd::params {
 
   case $::osfamily {
     'Debian':  {
-      $xinetd_confdir  = '/etc/xinetd.d'
-      $xinetd_conffile = '/etc/xinetd.conf'
-      $xinetd_package  = 'xinetd'
-      $xinetd_service  = 'xinetd'
+      $confdir       = '/etc/xinetd.d'
+      $conffile      = '/etc/xinetd.conf'
+      $package_name  = 'xinetd'
+      $service_name  = 'xinetd'
     }
     'FreeBSD': {
-      $xinetd_confdir  = '/usr/local/etc/xinetd.d'
-      $xinetd_conffile = '/usr/local/etc/xinetd.conf'
-      $xinetd_package  = 'security/xinetd'
-      $xinetd_service  = 'xinetd'
+      $confdir       = '/usr/local/etc/xinetd.d'
+      $conffile      = '/usr/local/etc/xinetd.conf'
+      $package_name  = 'security/xinetd'
+      $service_name  = 'xinetd'
     }
     'Suse':  {
-      $xinetd_confdir  = '/etc/xinetd.d'
-      $xinetd_conffile = '/etc/xinetd.conf'
-      $xinetd_package  = 'xinetd'
-      $xinetd_service  = 'xinetd'
+      $confdir       = '/etc/xinetd.d'
+      $conffile      = '/etc/xinetd.conf'
+      $package_name  = 'xinetd'
+      $service_name  = 'xinetd'
     }
-    'Solaris': {
-      fail('xinetd: module does not support Solaris')
+    'RedHat':  {
+      $confdir       = '/etc/xinetd.d'
+      $conffile      = '/etc/xinetd.conf'
+      $package_name  = 'xinetd'
+      $service_name  = 'xinetd'
     }
     default:   {
-      $xinetd_confdir  = '/etc/xinetd.d'
-      $xinetd_conffile = '/etc/xinetd.conf'
-      $xinetd_package  = 'xinetd'
-      $xinetd_service  = 'xinetd'
+      fail("xinetd: module does not support osfamily ${::osfamily}")
     }
   }
 
