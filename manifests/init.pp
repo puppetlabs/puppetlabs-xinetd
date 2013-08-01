@@ -44,7 +44,7 @@ class xinetd (
   service { $service_name:
     ensure     => running,
     enable     => true,
-    hasrestart => false,
+    restart    => 'pkill -1 xinetd',
     hasstatus  => true,
     require    => File[$conffile],
   }
