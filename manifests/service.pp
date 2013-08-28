@@ -5,6 +5,8 @@
 #
 # Parameters:
 #   $ensure         - optional - defaults to 'present'
+#   $log_on_success - optional - may contain any combination of
+#                       'PID', 'HOST', 'USERID', 'EXIT', 'DURATION', 'TRAFFIC'
 #   $log_on_failure - optional - may contain any combination of
 #                       'HOST', 'USERID', 'ATTEMPT'
 #   $service_type   - optional - type setting in xinetd
@@ -55,6 +57,7 @@ define xinetd::service (
   $port,
   $server,
   $ensure         = present,
+  $log_on_success = undef,
   $log_on_failure = undef,
   $service_type   = undef,
   $service_name   = $title,
@@ -106,6 +109,7 @@ define xinetd::service (
   # - $server_args
   # - $only_from
   # - $per_source
+  # - $log_on_success
   # - $log_on_failure
   # - $cps
   # - $flags
