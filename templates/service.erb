@@ -27,6 +27,9 @@ service <%= @service_name %>
 <% if @per_source -%>
         per_source      = <%= @per_source %>
 <% end -%>
+<% if @log_on_success -%>
+        log_on_success += <%= @log_on_success %>
+<% end -%>
 <% if @log_on_failure -%>
         log_on_failure += <%= @log_on_failure %>
 <% end -%>
