@@ -67,7 +67,6 @@ define xinetd::service (
   $group          = 'root',
   $groups         = 'yes',
   $instances      = 'UNLIMITED',
-  $log_on_failure = undef,
   $per_source     = undef,
   $protocol       = 'tcp',
   $server_args    = undef,
