@@ -10,10 +10,29 @@
 #  }
 #
 class xinetd (
-  $confdir       = $xinetd::params::confdir,
-  $conffile      = $xinetd::params::conffile,
-  $package_name  = $xinetd::params::package_name,
-  $service_name  = $xinetd::params::service_name
+  $confdir        = $xinetd::params::confdir,
+  $conffile       = $xinetd::params::conffile,
+  $package_name   = $xinetd::params::package_name,
+  $service_name   = $xinetd::params::service_name,
+  $enabled        = false,
+  $disabled       = false,
+  $log_type       = false,
+  $log_on_failure = false,
+  $log_on_success = false,
+  $no_access      = false,
+  $only_from      = false,
+  $max_load       = false,
+  $instances      = false,
+  $per_source     = false,
+  $bind           = false,
+  $mdns           = false,
+  $v6only         = false,
+  $passenv        = false,
+  $groups         = false,
+  $umask          = false,
+  $banner         = false,
+  $banner_fail    = false,
+  $banner_success = false,
 ) inherits xinetd::params {
 
   File {
