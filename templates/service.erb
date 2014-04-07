@@ -15,6 +15,9 @@ service <%= @service_name %>
 <% if @bind -%>
         bind            = <%= @bind %>
 <% end -%>
+<% if @redirect -%>
+        redirect        = <%= @redirect %>
+<% end -%>
 <% if @service_type -%>
         type            = <%= @service_type %>
 <% end -%>

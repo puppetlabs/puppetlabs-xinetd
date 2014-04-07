@@ -14,6 +14,7 @@ This is the xinetd module.
 #   $port         - required - determines the service port
 #   $server       - required - determines the program to execute for this service
 #   $server_args  - optional
+#   $redirect     - optional
 #   $disable      - optional - defaults to "no"
 #   $socket_type  - optional - defaults to "stream"
 #   $protocol     - optional - defaults to "tcp"

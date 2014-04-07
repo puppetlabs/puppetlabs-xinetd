@@ -32,6 +32,7 @@
 #   $access_times   - optional
 #   $log_type       - optional
 #   $bind           - optional
+#   $redirect       - optional
 #
 # Actions:
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/
@@ -78,7 +79,8 @@ define xinetd::service (
   $no_access      = undef,
   $access_times   = undef,
   $log_type       = undef,
-  $bind           = undef
+  $bind           = undef,
+  $redirect       = undef,
 ) {
 
   include xinetd
@@ -104,6 +106,7 @@ define xinetd::service (
   # - $groups
   # - $server
   # - $bind
+  # - $redirect
   # - $service_type
   # - $server_args
   # - $only_from
