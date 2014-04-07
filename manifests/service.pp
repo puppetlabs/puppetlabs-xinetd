@@ -32,12 +32,13 @@
 #   $access_times   - optional
 #   $log_type       - optional
 #   $bind           - optional
+#   $redirect       - optional
 #
 # Actions:
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/
 #
 # Requires:
-#   $server must be set
+#   $server or $redirect must be set
 #   $port must be set
 #
 # Sample Usage:
@@ -55,7 +56,7 @@
 #
 define xinetd::service (
   $port,
-  $server,
+  $server         = undef,
   $ensure         = present,
   $log_on_success = undef,
   $log_on_failure = undef,
@@ -78,10 +79,15 @@ define xinetd::service (
   $no_access      = undef,
   $access_times   = undef,
   $log_type       = undef,
-  $bind           = undef
+  $bind           = undef,
+  $redirect       = undef,
 ) {
 
   include xinetd
+
+  if ($server == undef and $redirect == undef) {
+    fail("You must specify either the 'server' or 'redirect' option")
+  }
 
   if $wait {
     $_wait = $wait
@@ -104,6 +110,7 @@ define xinetd::service (
   # - $groups
   # - $server
   # - $bind
+  # - $redirect
   # - $service_type
   # - $server_args
   # - $only_from
