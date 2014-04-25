@@ -16,7 +16,8 @@
 #   $flags          - optional
 #   $per_source     - optional
 #   $port           - required - determines the service port
-#   $server         - required - determines the program to execute for this service
+#   $redirect       - optional - redirect traffic to alternate host/port
+#   $server         - optional - determines the program to execute for this service
 #   $server_args    - optional
 #   $disable        - optional - defaults to "no"
 #   $socket_type    - optional - defaults to "stream"
@@ -32,7 +33,6 @@
 #   $access_times   - optional
 #   $log_type       - optional
 #   $bind           - optional
-#   $redirect       - optional
 #
 # Actions:
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/
