@@ -32,6 +32,8 @@
 #   $access_times   - optional
 #   $log_type       - optional
 #   $bind           - optional
+#   $env            - optional
+#   $passenv        - optional
 #
 # Actions:
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/
@@ -78,7 +80,9 @@ define xinetd::service (
   $no_access      = undef,
   $access_times   = undef,
   $log_type       = undef,
-  $bind           = undef
+  $bind           = undef,
+  $env            = undef,
+  $passenv        = undef
 ) {
 
   include xinetd
@@ -116,6 +120,8 @@ define xinetd::service (
   # - $no_access
   # - $access_types
   # - $log_type
+  # - $env
+  # - $passenv
   file { "${xinetd::confdir}/${title}":
     ensure  => $ensure,
     owner   => 'root',
