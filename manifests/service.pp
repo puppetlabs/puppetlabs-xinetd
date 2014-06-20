@@ -33,7 +33,6 @@
 #   $instances      - optional - defaults to "UNLIMITED"
 #   $only_from      - optional
 #   $wait           - optional - based on $protocol will default to "yes" for udp and "no" for tcp
-#   $xtype          - optional - determines the "type" of service, see xinetd.conf(5)
 #   $no_access      - optional
 #   $access_times   - optional
 #   $log_type       - optional
@@ -82,7 +81,6 @@ define xinetd::service (
   $user                    = 'root',
   $only_from               = undef,
   $wait                    = undef,
-  $xtype                   = undef,
   $no_access               = undef,
   $access_times            = undef,
   $log_type                = undef,
@@ -122,7 +120,6 @@ define xinetd::service (
   # - $log_on_failure_operator
   # - $cps
   # - $flags
-  # - $xtype
   # - $no_access
   # - $access_types
   # - $log_type
