@@ -53,6 +53,10 @@ class xinetd::params {
       fail("xinetd: module does not support osfamily ${::osfamily}")
     }
   }
+  
+  $service_status = $::operatingsystem ? {
+    default => true,
+  }
 
 }
 
