@@ -1,4 +1,6 @@
 class xinetd::params {
+  $default_default_user   = 'root'
+  $default_default_group  = 'root'
 
   case $::osfamily {
     'Debian':  {
@@ -13,6 +15,7 @@ class xinetd::params {
     'FreeBSD': {
       $confdir            = '/usr/local/etc/xinetd.d'
       $conffile           = '/usr/local/etc/xinetd.conf'
+      $default_group      = 'wheel'
       $package_name       = 'security/xinetd'
       $service_hasrestart = false
       $service_hasstatus  = true
@@ -54,5 +57,11 @@ class xinetd::params {
     }
   }
 
-}
+  if $default_user == undef {
+    $default_user = $default_default_user
+  }
 
+  if $default_group == undef {
+    $default_group = $default_default_group
+  }
+}
