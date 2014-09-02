@@ -13,6 +13,7 @@ class xinetd (
   $confdir            = $xinetd::params::confdir,
   $conffile           = $xinetd::params::conffile,
   $package_name       = $xinetd::params::package_name,
+  $package_ensure     = $xinetd::params::package_ensure,
   $service_name       = $xinetd::params::service_name,
   $service_restart    = $xinetd::params::service_restart,
   $service_status     = $xinetd::params::service_status,
@@ -41,7 +42,7 @@ class xinetd (
   }
 
   package { $package_name:
-    ensure => installed,
+    ensure => $package_ensure,
     before => Service[$service_name],
   }
 
