@@ -33,6 +33,9 @@ service <%= @service_name %>
 <% if @log_on_failure -%>
         log_on_failure <%= @log_on_failure_operator %> <%= @log_on_failure %>
 <% end -%>
+<% if @instances -%>
+        instances       = <%= @instances %>
+<% end -%>
 <% if @cps -%>
         cps             = <%= @cps %>
 <% end -%>
