@@ -39,6 +39,9 @@ service <%= @service_name %>
 <% if @flags -%>
         flags           = <%= @flags %>
 <% end -%>
+<% if @xtype -%>
+        type            = <%= @xtype %>
+<% end -%>
 <% if @no_access -%>
         no_access       = <%= @no_access %>
 <% end -%>
