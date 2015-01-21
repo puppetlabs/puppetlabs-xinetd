@@ -12,6 +12,12 @@ service <%= @service_name %>
         group           = <%= @group %>
         groups          = <%= @groups %>
         server          = <%= @server %>
+<% if @env  -%>
+        env             = <%= @env %>
+<% end -%>
+<% if @passenv  -%>
+        passenv         = <%= @passenv %>
+<% end -%>
 <% if @bind -%>
         bind            = <%= @bind %>
 <% end -%>

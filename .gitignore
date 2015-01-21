@@ -3,3 +3,4 @@ pkg/
 *.swp
 Gemfile.lock
 .rspec_system/
+.project
