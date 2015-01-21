@@ -102,7 +102,7 @@ define xinetd::service (
   }
 
   if $xtype {
-    warning ('The $xtype parameter to xinetd::service is deprecated. Use the service_type parameter instead.') 
+    warning ('The $xtype parameter to xinetd::service is deprecated. Use the service_type parameter instead.')
   }
 
   # Template uses:
