@@ -19,6 +19,7 @@ class xinetd (
   $service_status     = $xinetd::params::service_status,
   $service_hasrestart = $xinetd::params::service_hasrestart,
   $service_hasstatus  = $xinetd::params::service_hasstatus,
+  $purge_confdir      = false,
 ) inherits xinetd::params {
 
   File {
@@ -29,8 +30,10 @@ class xinetd (
   }
 
   file { $confdir:
-    ensure => directory,
-    mode   => '0755',
+    ensure  => directory,
+    mode    => '0755',
+    recurse => $purge_confdir,
+    purge   => $purge_confdir,
   }
 
   # Template uses:
