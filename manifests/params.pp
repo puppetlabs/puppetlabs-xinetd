@@ -1,3 +1,5 @@
+# == Class: xinetd::params
+#
 class xinetd::params {
   $default_default_user   = 'root'
   $default_default_group  = 'root'
