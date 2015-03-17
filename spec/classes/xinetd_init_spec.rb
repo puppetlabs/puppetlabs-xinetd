@@ -27,6 +27,7 @@ describe 'xinetd' do
       should contain_file('/etc/xinetd.conf').without_content(/mdns *=/)
       should contain_file('/etc/xinetd.conf').without_content(/v6only *=/)
       should contain_file('/etc/xinetd.conf').without_content(/passenv *=/)
+      should contain_file('/etc/xinetd.conf').without_content(/env *=/)
       should contain_file('/etc/xinetd.conf').without_content(/groups *=/)
       should contain_file('/etc/xinetd.conf').without_content(/umask *=/)
       should contain_file('/etc/xinetd.conf').without_content(/banner *=/)
@@ -53,6 +54,7 @@ describe 'xinetd' do
         :bind           => '0.0.0.0',
         :mdns           => 'yes',
         :v6only         => 'no',
+        :env            => 'foo=bar',
         :passenv        => 'yes',
         :groups         => 'yes',
         :umask          => '002',
@@ -76,6 +78,8 @@ describe 'xinetd' do
       should contain_file('/etc/xinetd.conf').with_content(/bind *= 0.0.0.0/)
       should contain_file('/etc/xinetd.conf').with_content(/mdns *= yes/)
       should contain_file('/etc/xinetd.conf').with_content(/v6only *= no/)
+      should contain_file('/etc/xinetd.conf').with_content(/env *= foo=bar/)
+      should contain_file('/etc/xinetd.conf').with_content(/passenv *= yes/)
       should contain_file('/etc/xinetd.conf').with_content(/passenv *= yes/)
       should contain_file('/etc/xinetd.conf').with_content(/groups *= yes/)
       should contain_file('/etc/xinetd.conf').with_content(/umask *= 002/)

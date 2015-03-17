@@ -61,6 +61,9 @@ defaults
 <% end %>
 
 # setup environmental attributes
+<% if @env -%>
+        env             = <%= @env -%>
+<% end %>
 <% if @passenv -%>
         passenv         = <%= @passenv -%>
 <% end %>
