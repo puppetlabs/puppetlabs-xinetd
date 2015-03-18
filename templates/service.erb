@@ -57,4 +57,7 @@ service <%= @service_name %>
 <% if @env -%>
         env             = <%= @env %>
 <% end -%>
+<% if @instances -%>
+        instances       = <%= @instances %>
+<% end -%>
 }
