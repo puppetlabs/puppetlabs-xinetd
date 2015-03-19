@@ -90,6 +90,9 @@ describe 'xinetd' do
   end
 
   context 'with defaults' do
+    let :facts do
+      { :osfamily => 'Debian' }
+    end
     it {
       should contain_package('xinetd')
       should contain_file('/etc/xinetd.conf')
@@ -101,6 +104,9 @@ describe 'xinetd' do
   end
 
   context 'with managed confdir' do
+    let :facts do
+      { :osfamily => 'Debian' }
+    end
     let :params do
       { :purge_confdir => true }
     end
