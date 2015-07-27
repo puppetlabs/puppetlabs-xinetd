@@ -57,7 +57,7 @@ page.
 ### Parameters:
 
  * `server`       - required - determines the program to execute for this service
- * `port`         - required - determines the service port
+ * `port`         - optional - determines the service port (required if service is not listed in `/etc/services`)
  * `cps`          - optional
  * `flags`        - optional
  * `per_source`   - optional
