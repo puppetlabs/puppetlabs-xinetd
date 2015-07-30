@@ -10,8 +10,8 @@ service <%= @service_name %>
         socket_type     = <%= @socket_type %>
         protocol        = <%= @protocol %>
         wait            = <%= @_wait %>
-        user            = <%= @user %>
-        group           = <%= @group %>
+        user            = <%= @_user %>
+        group           = <%= @_group %>
         groups          = <%= @groups %>
         server          = <%= @server %>
 <% if @bind -%>

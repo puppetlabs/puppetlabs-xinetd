@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe 'xinetd::service' do
 
-  let :facts do
-    { :osfamily => 'Debian' }
-  end
-
   let :default_params do
     {
       'port'   => '80',
@@ -15,6 +11,25 @@ describe 'xinetd::service' do
 
   let :title do
     "httpd"
+  end
+
+  describe "ensure proper user/group are set in FreeBSD" do
+    let :facts do
+      { :osfamily => 'FreeBSD' }
+    end
+
+    let :params do
+      default_params
+    end
+
+    it {
+      should contain_file('/usr/local/etc/xinetd.d/httpd').with_content(/user\s*=\sroot/)
+      should contain_file('/usr/local/etc/xinetd.d/httpd').with_content(/group\s*=\swheel/)
+    }
+  end
+
+  let :facts do
+    { :osfamily => 'Debian' }
   end
 
   describe 'with default ensure' do
@@ -88,7 +103,7 @@ describe 'xinetd::service' do
 
   # nice values, good
   [-20,0,9,19].each do |i|
-    describe "with nice #{i}" do
+    describe "with nice valid nice value: #{i}" do
       let :params do
         default_params.merge({ :nice => i })
       end
@@ -99,7 +114,7 @@ describe 'xinetd::service' do
 
   # nice values, bad
   ['-21','90','foo',-21,90,20].each do |i|
-    describe "with nice #{i}" do
+    describe "with out-of-range nice value: #{i}" do
       let :params do
         default_params.merge({ :nice => i })
       end
