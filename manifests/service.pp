@@ -38,7 +38,7 @@
 #   $access_times   - optional
 #   $log_type       - optional
 #   $bind           - optional
-#   $nice           - optional
+#   $nice           - optional - integer between -20 and 19, inclusive.
 #
 # Actions:
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/
@@ -58,7 +58,7 @@
 #     cps         => '100 2',
 #     flags       => 'IPv4',
 #     per_source  => '11',
-#     nice        => '19',
+#     nice        => 19,
 #   } # xinetd::service
 #
 define xinetd::service (
@@ -108,9 +108,11 @@ define xinetd::service (
   if $xtype {
     warning ('The $xtype parameter to xinetd::service is deprecated. Use the service_type parameter instead.')
   }
-  if $nice {
-    validate_re($nice,'^-?[0-9]+$')
-    if !is_numeric($nice) or $nice < -19 or $nice > 19 {
+
+  if $nice != undef {
+    validate_integer($nice)
+
+    if $nice < -20 or $nice > 19 {
       fail("Invalid value for nice, ${nice}")
     }
   }
