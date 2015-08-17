@@ -93,15 +93,15 @@ define xinetd::service (
   $env                     = undef,
 ) {
 
-  include xinetd
+  include ::xinetd
 
   if $wait {
     $_wait = $wait
   } else {
     validate_re($protocol, '(tcp|udp)')
     $_wait = $protocol ? {
-      tcp => 'no',
-      udp => 'yes'
+      'tcp' => 'no',
+      'udp' => 'yes'
     }
   }
 
