@@ -89,7 +89,7 @@ describe 'xinetd' do
     }
   end
 
-  context 'with defaults' do
+  context 'with defaults on Linux' do
     let :facts do
       { :osfamily => 'Debian' }
     end
@@ -97,6 +97,18 @@ describe 'xinetd' do
       should contain_package('xinetd')
       should contain_file('/etc/xinetd.conf')
       should contain_file('/etc/xinetd.d').with_ensure('directory')
+      should contain_service('xinetd')
+    }
+  end
+
+  context 'with defaults on FreeBSD' do
+    let :facts do
+      { :osfamily => 'FreeBSD' }
+    end
+    it {
+      should contain_package('security/xinetd')
+      should contain_file('/usr/local/etc/xinetd.conf')
+      should contain_file('/usr/local/etc/xinetd.d').with_ensure('directory')
       should contain_service('xinetd')
     }
   end

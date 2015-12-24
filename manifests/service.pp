@@ -74,14 +74,14 @@ define xinetd::service (
   $cps                     = undef,
   $disable                 = 'no',
   $flags                   = undef,
-  $group                   = $xinetd::params::default_group,
+  $group                   = undef,
   $groups                  = 'yes',
   $instances               = 'UNLIMITED',
   $per_source              = undef,
   $protocol                = 'tcp',
   $server_args             = undef,
   $socket_type             = 'stream',
-  $user                    = $xinetd::params::default_user,
+  $user                    = undef,
   $only_from               = undef,
   $wait                    = undef,
   $xtype                   = undef,
@@ -94,6 +94,18 @@ define xinetd::service (
 ) {
 
   include ::xinetd
+
+  if $user {
+    $_user = $user
+  } else {
+    $_user = $xinetd::params::default_user
+  }
+
+  if $group {
+    $_group = $group
+  } else {
+    $_group = $xinetd::params::default_group
+  }
 
   if $wait {
     $_wait = $wait
