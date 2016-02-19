@@ -39,6 +39,7 @@
 #   $log_type       - optional
 #   $bind           - optional
 #   $nice           - optional - integer between -20 and 19, inclusive.
+#   $redirect       - optional - ip or hostname and port of the target service
 #
 # Actions:
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/
@@ -91,6 +92,7 @@ define xinetd::service (
   $bind                    = undef,
   $nice                    = undef,
   $env                     = undef,
+  $redirect                = undef,
 ) {
 
   include ::xinetd
@@ -155,6 +157,7 @@ define xinetd::service (
   # - $access_types
   # - $log_type
   # - $nice
+  # - $redirect
   file { "${xinetd::confdir}/${title}":
     ensure  => $ensure,
     owner   => 'root',

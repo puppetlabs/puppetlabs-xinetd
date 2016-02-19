@@ -62,4 +62,7 @@ service <%= @service_name %>
 <% if @instances -%>
         instances       = <%= @instances %>
 <% end -%>
+<% if @redirect -%>
+        redirect        = <%= @redirect %>
+<% end -%>
 }
