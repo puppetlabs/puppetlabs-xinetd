@@ -71,6 +71,7 @@ page.
  * `wait`         - optional - based on $protocol will default to "yes" for udp and "no" for tcp
  * `service_type` - optional - type setting in xinetd
  * `nice`         - optional - integer between -20 and 19, inclusive.
+ * `redirect`     - optional - ip or hostname and port of the target service
 
 ### Sample Usage
 

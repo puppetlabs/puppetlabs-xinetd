@@ -126,4 +126,16 @@ describe 'xinetd::service' do
       end
     end
   end
+
+  describe 'with redirect' do
+    let :params do
+      default_params.merge({
+        :redirect => 'somehost.somewhere 65535',
+      })
+    end
+    it {
+      should contain_file('/etc/xinetd.d/httpd').with_content(
+        /redirect\s*\=\s*somehost.somewhere 65535/)
+    }
+  end
 end
