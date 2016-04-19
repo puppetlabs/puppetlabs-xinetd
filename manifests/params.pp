@@ -27,6 +27,8 @@ class xinetd::params {
       $service_hasrestart = false
       $service_hasstatus  = true
       $service_name       = 'xinetd'
+      $service_restart    = undef
+      $service_status     = undef
     }
     'Suse':  {
       $confdir            = '/etc/xinetd.d'
@@ -36,6 +38,7 @@ class xinetd::params {
       $service_hasstatus  = false
       $service_name       = 'xinetd'
       $service_restart    = "/sbin/service ${service_name} reload"
+      $service_status     = undef
     }
     'RedHat':  {
       $confdir            = '/etc/xinetd.d'
@@ -45,6 +48,7 @@ class xinetd::params {
       $service_hasstatus  = true
       $service_name       = 'xinetd'
       $service_restart    = "/sbin/service ${service_name} reload"
+      $service_status     = undef
     }
     'Gentoo': {
       $confdir            = '/etc/xinetd.d'
@@ -53,14 +57,18 @@ class xinetd::params {
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_name       = 'xinetd'
+      $service_restart    = undef
+      $service_status     = undef
     }
     'Linux': {
       case $::operatingsystem {
         'Amazon': {
-          $confdir      = '/etc/xinetd.d'
-          $conffile     = '/etc/xinetd.conf'
-          $package_name = 'xinetd'
-          $service_name = 'xinetd'
+          $confdir         = '/etc/xinetd.d'
+          $conffile        = '/etc/xinetd.conf'
+          $package_name    = 'xinetd'
+          $service_name    = 'xinetd'
+          $service_restart = undef
+          $service_status     = undef
         }
         default: {
           fail("xinetd: module does not support Linux operatingsystem ${::operatingsystem}")
