@@ -1,3 +1,48 @@
+##Release 2.0.0
+###Summary
+This is a major release that removes support for Puppet 2.x and adds support for Puppet 3.8 and Puppet 4.0. Also includes various new parameters and bugfixes.
+
+####Backwards Incompatibility
+- Removes support for Puppet 2.x
+
+####Features
+- Adds Puppet 3.8.x support
+- Adds Puppet 4.x support
+- Adds compatibility with ArchLinux
+- New parameters in `xinetd`
+  - $enabled
+  - $disabled
+  - $log_type
+  - $log_on_failure
+  - $log_on_success
+  - $no_access
+  - $only_from
+  - $max_load
+  - $instances
+  - $per_source
+  - $bind
+  - $mdns
+  - $v6only
+  - $env
+  - $passenv
+  - $groups
+  - $umask
+  - $banner
+  - $banner_fail
+  - $banner_success
+  - $purge_confdir
+  - $redirect
+- New parameters in `xinetd::service`
+  - $nice
+  - $env
+
+####Bugfixes
+- (MODULES-2012) Fixes a strict_variables failure when `$default_user` and `$default_group` are set.
+- Fixes a strict_variables failure on Debian.
+- Pipe through instances variable from xinetd::service. Documented but not implemented.
+- Changes `$port` to an optional parameter.
+- (MODULES-2313) Fixes default_user/group functionality
+
 ##2015-02-10 - Release 1.5.0
 ###Summary
 This release adds some new parameters and also pins to rspec-puppet 1.x until migration.
