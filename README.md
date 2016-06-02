@@ -36,6 +36,7 @@ default they are *not* set, allowing the internal xinetd defaults to be used:
  * `no_access`      - Determines the remote hosts to which the particular service is unavailable.
  * `only_from`      - Determines the remote hosts to which the particular service is available.
  * `max_load`       - Takes a floating point value as the load at which the service will stop accepting connections.
+ * `cps`            - Takes two numbers to set a rate limit for incoming connections. The first number is the number of connections per second at which the service is disabled. The second number is the time in seconds before the service will be enabled again.
  * `instances`      - Determines the number of servers that can be simultaneously active for a service (the default is no limit).
  * `per_source`     - This specifies the maximum instances of this service per source IP address. 
  * `bind`           - Allows a service to be bound to a specific interface on the machine.

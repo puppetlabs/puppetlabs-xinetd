@@ -21,6 +21,7 @@ describe 'xinetd' do
       should contain_file('/etc/xinetd.conf').without_content(/no_access *=/)
       should contain_file('/etc/xinetd.conf').without_content(/only_from *=/)
       should contain_file('/etc/xinetd.conf').without_content(/max_load *=/)
+      should contain_file('/etc/xinetd.conf').without_content(/cps *=/)
       should contain_file('/etc/xinetd.conf').without_content(/instances *=/)
       should contain_file('/etc/xinetd.conf').without_content(/per_source *=/)
       should contain_file('/etc/xinetd.conf').without_content(/bind *=/)
@@ -49,7 +50,8 @@ describe 'xinetd' do
         :no_access      => '128.138.209.10',
         :only_from      => '127.0.0.1',
         :max_load       => '2',
-        :instances      => '50', 
+        :cps            => '50 10',
+        :instances      => '50',
         :per_source     => '50',
         :bind           => '0.0.0.0',
         :mdns           => 'yes',
@@ -73,6 +75,7 @@ describe 'xinetd' do
       should contain_file('/etc/xinetd.conf').with_content(/no_access *= 128.138.209.10/)
       should contain_file('/etc/xinetd.conf').with_content(/only_from *= 127.0.0.1/)
       should contain_file('/etc/xinetd.conf').with_content(/max_load *= 2/)
+      should contain_file('/etc/xinetd.conf').with_content(/cps *= 50 10/)
       should contain_file('/etc/xinetd.conf').with_content(/instances *= 50/)
       should contain_file('/etc/xinetd.conf').with_content(/per_source *= 50/)
       should contain_file('/etc/xinetd.conf').with_content(/bind *= 0.0.0.0/)
