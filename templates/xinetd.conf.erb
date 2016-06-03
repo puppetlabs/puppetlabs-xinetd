@@ -12,78 +12,78 @@ defaults
 # The next two items are intended to be a quick access place to
 # temporarily enable or disable services.
 <% if @enabled -%>
-        enabled         = <%= @enabled -%>
-<% end %>
+        enabled         = <%= @enabled %>
+<% end -%>
 <% if @disabled -%>
-        disabled        = <%= @disabled -%>
-<% end %>
+        disabled        = <%= @disabled %>
+<% end -%>
 
 # Define general logging characteristics.
 <% if @log_type -%>
-        log_type        = <%= @log_type -%>
-<% end %>
+        log_type        = <%= @log_type %>
+<% end -%>
 <% if @log_on_failure -%>
-        log_on_failure  = <%= @log_on_failure -%>
-<% end %>
+        log_on_failure  = <%= @log_on_failure %>
+<% end -%>
 <% if @log_on_success -%>
-        log_on_success  = <%= @log_on_success -%>
-<% end %>
+        log_on_success  = <%= @log_on_success %>
+<% end -%>
 
 # Define access restriction defaults
 <% if @no_access -%>
-        no_access       = <%= @no_access -%>
-<% end %>
+        no_access       = <%= @no_access %>
+<% end -%>
 <% if @only_from -%>
-        only_from       = <%= @only_from -%>
-<% end %>
+        only_from       = <%= @only_from %>
+<% end -%>
 <% if @max_load -%>
-        max_load        = <%= @max_load -%>
-<% end %>
+        max_load        = <%= @max_load %>
+<% end -%>
 <% if @cps -%>
-        cps             = <%= @cps -%>
-<% end %>
+        cps             = <%= @cps %>
+<% end -%>
 <% if @instances -%>
-        instances       = <%= @instances -%>
-<% end %>
+        instances       = <%= @instances %>
+<% end -%>
 <% if @per_source -%>
-        per_source      = <%= @per_source -%>
-<% end %>
+        per_source      = <%= @per_source %>
+<% end -%>
 
 # Address and networking defaults
 <% if @bind -%>
-        bind            = <%= @bind -%>
-<% end %>
+        bind            = <%= @bind %>
+<% end -%>
 <% if @mdns -%>
-        mdns            = <%= @mdns -%>
-<% end %>
+        mdns            = <%= @mdns %>
+<% end -%>
 <% if @v6only -%>
-        v6only          = <%= @v6only -%>
-<% end %>
+        v6only          = <%= @v6only %>
+<% end -%>
 
 # setup environmental attributes
 <% if @env -%>
-        env             = <%= @env -%>
-<% end %>
+        env             = <%= @env %>
+<% end -%>
 <% if @passenv -%>
-        passenv         = <%= @passenv -%>
-<% end %>
+        passenv         = <%= @passenv %>
+<% end -%>
 <% if @groups -%>
-        groups          = <%= @groups -%>
-<% end %>
+        groups          = <%= @groups %>
+<% end -%>
 <% if @umask -%>
-        umask           = <%= @umask -%>
-<% end %>
+        umask           = <%= @umask %>
+<% end -%>
 
 # Generally, banners are not used. This sets up their global defaults
 <% if @banner -%>
-        banner          = <%= @banner -%>
-<% end %>
+        banner          = <%= @banner %>
+<% end -%>
 <% if @banner_fail -%>
-        banner_fail     = <%= @banner_fail -%>
-<% end %>
+        banner_fail     = <%= @banner_fail %>
+<% end -%>
 <% if @banner_success -%>
-        banner_success  = <%= @banner_success -%>
-<% end %>
+        banner_success  = <%= @banner_success %>
+<% end -%>
 }
 
 includedir <%= @confdir %>
