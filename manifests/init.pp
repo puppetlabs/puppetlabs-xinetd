@@ -27,6 +27,7 @@ class xinetd (
   $no_access          = undef,
   $only_from          = undef,
   $max_load           = undef,
+  $cps                = undef,
   $instances          = undef,
   $per_source         = undef,
   $bind               = undef,
