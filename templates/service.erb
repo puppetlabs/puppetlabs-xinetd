@@ -15,7 +15,9 @@ service <%= @service_name %>
         group           = <%= @_group %>
 <% end -%>
         groups          = <%= @groups %>
+<% if @server -%>
         server          = <%= @server %>
+<% end -%>
 <% if @bind -%>
         bind            = <%= @bind %>
 <% end -%>

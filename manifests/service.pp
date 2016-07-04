@@ -22,7 +22,7 @@
 #   $flags          - optional
 #   $per_source     - optional
 #   $port           - optional - determines the service port (required if service is not listed in /etc/services)
-#   $server         - required - determines the program to execute for this service
+#   $server         - optional - determines the program to execute for this service
 #   $server_args    - optional
 #   $disable        - optional - defaults to "no"
 #   $socket_type    - optional - defaults to "stream"
@@ -48,7 +48,7 @@
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/
 #
 # Requires:
-#   $server must be set
+#   $server or $redirect must be set
 #   $port must be set
 #
 # Sample Usage:
@@ -66,7 +66,7 @@
 #   } # xinetd::service
 #
 define xinetd::service (
-  $server,
+  $server                           = undef,
   $port                             = undef,
   $ensure                           = present,
   $log_on_success                   = undef,
@@ -79,6 +79,7 @@ define xinetd::service (
   $disable                          = 'no',
   $flags                            = undef,
   $group                            = undef,
+  Boolean $use_default_group        = true,
   $groups                           = 'yes',
   $instances                        = 'UNLIMITED',
   $per_source                       = undef,
@@ -101,7 +102,9 @@ define xinetd::service (
 
   include ::xinetd
 
-  validate_bool($use_default_group)
+  unless ($server or $redirect) {
+    fail('xinetd::service needs either of server or redirect')
+  }
 
   if $user {
     $_user = $user
