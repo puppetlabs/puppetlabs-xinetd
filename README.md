@@ -68,6 +68,7 @@ page.
  * `protocol`     - optional - defaults to "tcp"
  * `user`         - optional - defaults to "root"
  * `group`        - optional - defaults to "root"
+ * `use_default_group` - optional - set to "false" to prevent using the OS specific default group for the service, defaults to "true"
  * `instances`    - optional - defaults to "UNLIMITED"
  * `wait`         - optional - based on $protocol will default to "yes" for udp and "no" for tcp
  * `service_type` - optional - type setting in xinetd
