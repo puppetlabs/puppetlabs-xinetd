@@ -59,6 +59,33 @@ describe 'xinetd::service' do
     }
   end
 
+  describe 'with group' do
+    let :params do
+      default_params.merge({'group' => 'foo'})
+    end
+    it {
+      should contain_file('/etc/xinetd.d/httpd').with_content(/group\s*=\s*foo/)
+    }
+  end
+
+  describe 'with use_default_group true' do
+    let :params do
+      default_params.merge({'use_default_group' => true})
+    end
+    it {
+      should contain_file('/etc/xinetd.d/httpd').with_content(/group\s*=\s*root/)
+    }
+  end
+
+  describe 'with use_default_group false' do
+    let :params do
+      default_params.merge({'use_default_group' => false})
+    end
+    it {
+      should contain_file('/etc/xinetd.d/httpd').without_content(/group\s*=/)
+    }
+  end
+
   describe 'without log_on_<success|failure>' do
     let :params do
       default_params
