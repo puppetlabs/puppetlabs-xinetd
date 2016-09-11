@@ -57,7 +57,7 @@ describe 'xinetd' do
         :mdns           => 'yes',
         :v6only         => 'no',
         :env            => 'foo=bar',
-        :passenv        => 'yes',
+        :passenv        => 'PATH',
         :groups         => 'yes',
         :umask          => '002',
         :banner         => '/etc/banner',
@@ -82,8 +82,7 @@ describe 'xinetd' do
       should contain_file('/etc/xinetd.conf').with_content(/mdns *= yes/)
       should contain_file('/etc/xinetd.conf').with_content(/v6only *= no/)
       should contain_file('/etc/xinetd.conf').with_content(/env *= foo=bar/)
-      should contain_file('/etc/xinetd.conf').with_content(/passenv *= yes/)
-      should contain_file('/etc/xinetd.conf').with_content(/passenv *= yes/)
+      should contain_file('/etc/xinetd.conf').with_content(/passenv *= PATH/)
       should contain_file('/etc/xinetd.conf').with_content(/groups *= yes/)
       should contain_file('/etc/xinetd.conf').with_content(/umask *= 002/)
       should contain_file('/etc/xinetd.conf').with_content(/banner *= \/etc\/banner/)

@@ -39,6 +39,8 @@
 #   $log_type       - optional
 #   $bind           - optional
 #   $nice           - optional - integer between -20 and 19, inclusive.
+#   $env            - optional
+#   $passenv        - optional
 #   $redirect       - optional - ip or hostname and port of the target service
 #
 # Actions:
@@ -92,6 +94,7 @@ define xinetd::service (
   $bind                             = undef,
   Optional[Integer[-20, 19]] $nice  = undef,
   $env                              = undef,
+  $passenv                          = undef,
   $redirect                         = undef,
 ) {
 
@@ -148,6 +151,8 @@ define xinetd::service (
   # - $access_types
   # - $log_type
   # - $nice
+  # - $env
+  # - $passenv
   # - $redirect
   file { "${xinetd::confdir}/${title}":
     ensure  => $ensure,
