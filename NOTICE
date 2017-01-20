@@ -1,8 +1,6 @@
-Xinetd Puppet Module
+Puppet Module - puppetlabs-xinetd
 
-Copyright (C) 2010-2014 Garrett Honeycutt
-
-Garrett Honeycutt can be contacted at: contact@garretthoneycutt.com
+Copyright 2017 Puppet, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
