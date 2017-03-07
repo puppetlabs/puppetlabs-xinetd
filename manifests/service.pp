@@ -33,7 +33,7 @@
 #   $instances      - optional - defaults to "UNLIMITED"
 #   $only_from      - optional
 #   $wait           - optional - based on $protocol will default to "yes" for udp and "no" for tcp
-#   $xtype          - deprecated - use $service_type instead 
+#   $xtype          - deprecated - use $service_type instead
 #   $no_access      - optional
 #   $access_times   - optional
 #   $log_type       - optional
