@@ -29,6 +29,7 @@
 #   $protocol       - optional - defaults to "tcp"
 #   $user           - optional - defaults to "root"
 #   $group          - optional - defaults to "root"
+#   $use_default_group - optional - defaults to true
 #   $groups         - optional - defaults to "yes"
 #   $instances      - optional - defaults to "UNLIMITED"
 #   $only_from      - optional
@@ -76,6 +77,7 @@ define xinetd::service (
   $disable                 = 'no',
   $flags                   = undef,
   $group                   = undef,
+  $use_default_group       = true,
   $groups                  = 'yes',
   $instances               = 'UNLIMITED',
   $per_source              = undef,
@@ -97,13 +99,15 @@ define xinetd::service (
 
   include ::xinetd
 
+  validate_bool($use_default_group)
+
   if $user {
     $_user = $user
   } else {
     $_user = $xinetd::params::default_user
   }
 
-  if $group {
+  if $group or bool2num($use_default_group) == 0 {
     $_group = $group
   } else {
     $_group = $xinetd::params::default_group
