@@ -129,13 +129,27 @@ describe 'xinetd::service' do
 
   describe 'with redirect' do
     let :params do
-      default_params.merge({
+      {
+        :port     => '80',
         :redirect => 'somehost.somewhere 65535',
-      })
+      }
     end
     it {
       should contain_file('/etc/xinetd.d/httpd').with_content(
         /redirect\s*\=\s*somehost.somewhere 65535/)
     }
+  end
+
+  describe 'without redirect and server' do
+    let :params do
+      {
+        :port => '80',
+      }
+    end
+    it 'should fail' do
+      expect {
+        should contain_class('xinetd')
+      }.to raise_error(Puppet::Error)
+    end
   end
 end
