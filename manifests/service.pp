@@ -33,7 +33,7 @@
 #   $instances      - optional - defaults to "UNLIMITED"
 #   $only_from      - optional
 #   $wait           - optional - based on $protocol will default to "yes" for udp and "no" for tcp
-#   $xtype          - deprecated - use $service_type instead 
+#   $xtype          - deprecated - use $service_type instead
 #   $no_access      - optional
 #   $access_times   - optional
 #   $log_type       - optional
@@ -64,35 +64,35 @@
 #
 define xinetd::service (
   $server,
-  $port                    = undef,
-  $ensure                  = present,
-  $log_on_success          = undef,
-  $log_on_success_operator = '+=',
-  $log_on_failure          = undef,
-  $log_on_failure_operator = '+=',
-  $service_type            = undef,
-  $service_name            = $title,
-  $cps                     = undef,
-  $disable                 = 'no',
-  $flags                   = undef,
-  $group                   = undef,
-  $groups                  = 'yes',
-  $instances               = 'UNLIMITED',
-  $per_source              = undef,
-  $protocol                = 'tcp',
-  $server_args             = undef,
-  $socket_type             = 'stream',
-  $user                    = undef,
-  $only_from               = undef,
-  $wait                    = undef,
-  $xtype                   = undef,
-  $no_access               = undef,
-  $access_times            = undef,
-  $log_type                = undef,
-  $bind                    = undef,
-  $nice                    = undef,
-  $env                     = undef,
-  $redirect                = undef,
+  $port                             = undef,
+  $ensure                           = present,
+  $log_on_success                   = undef,
+  $log_on_success_operator          = '+=',
+  $log_on_failure                   = undef,
+  $log_on_failure_operator          = '+=',
+  $service_type                     = undef,
+  $service_name                     = $title,
+  $cps                              = undef,
+  $disable                          = 'no',
+  $flags                            = undef,
+  $group                            = undef,
+  $groups                           = 'yes',
+  $instances                        = 'UNLIMITED',
+  $per_source                       = undef,
+  Enum['tcp', 'udp'] $protocol      = 'tcp',
+  $server_args                      = undef,
+  $socket_type                      = 'stream',
+  $user                             = undef,
+  $only_from                        = undef,
+  $wait                             = undef,
+  $xtype                            = undef,
+  $no_access                        = undef,
+  $access_times                     = undef,
+  $log_type                         = undef,
+  $bind                             = undef,
+  Optional[Integer[-20, 19]] $nice  = undef,
+  $env                              = undef,
+  $redirect                         = undef,
 ) {
 
   include ::xinetd
@@ -112,7 +112,6 @@ define xinetd::service (
   if $wait {
     $_wait = $wait
   } else {
-    validate_re($protocol, '(tcp|udp)')
     $_wait = $protocol ? {
       'tcp' => 'no',
       'udp' => 'yes'
@@ -121,14 +120,6 @@ define xinetd::service (
 
   if $xtype {
     warning ('The $xtype parameter to xinetd::service is deprecated. Use the service_type parameter instead.')
-  }
-
-  if $nice != undef {
-    validate_integer($nice)
-
-    if $nice < -20 or $nice > 19 {
-      fail("Invalid value for nice, ${nice}")
-    }
   }
 
   # Template uses:
