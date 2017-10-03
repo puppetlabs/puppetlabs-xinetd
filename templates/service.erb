@@ -11,9 +11,13 @@ service <%= @service_name %>
         protocol        = <%= @protocol %>
         wait            = <%= @_wait %>
         user            = <%= @_user %>
+<% if @_group -%>
         group           = <%= @_group %>
+<% end -%>
         groups          = <%= @groups %>
+<% if @server -%>
         server          = <%= @server %>
+<% end -%>
 <% if @bind -%>
         bind            = <%= @bind %>
 <% end -%>

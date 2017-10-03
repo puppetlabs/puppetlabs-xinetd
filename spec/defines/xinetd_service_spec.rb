@@ -59,6 +59,33 @@ describe 'xinetd::service' do
     }
   end
 
+  describe 'with group' do
+    let :params do
+      default_params.merge({'group' => 'foo'})
+    end
+    it {
+      should contain_file('/etc/xinetd.d/httpd').with_content(/group\s*=\s*foo/)
+    }
+  end
+
+  describe 'with use_default_group true' do
+    let :params do
+      default_params.merge({'use_default_group' => true})
+    end
+    it {
+      should contain_file('/etc/xinetd.d/httpd').with_content(/group\s*=\s*root/)
+    }
+  end
+
+  describe 'with use_default_group false' do
+    let :params do
+      default_params.merge({'use_default_group' => false})
+    end
+    it {
+      should contain_file('/etc/xinetd.d/httpd').without_content(/group\s*=/)
+    }
+  end
+
   describe 'without log_on_<success|failure>' do
     let :params do
       default_params
@@ -129,13 +156,27 @@ describe 'xinetd::service' do
 
   describe 'with redirect' do
     let :params do
-      default_params.merge({
+      {
+        :port     => '80',
         :redirect => 'somehost.somewhere 65535',
-      })
+      }
     end
     it {
       should contain_file('/etc/xinetd.d/httpd').with_content(
         /redirect\s*\=\s*somehost.somewhere 65535/)
     }
+  end
+
+  describe 'without redirect and server' do
+    let :params do
+      {
+        :port => '80',
+      }
+    end
+    it 'should fail' do
+      expect {
+        should contain_class('xinetd')
+      }.to raise_error(Puppet::Error)
+    end
   end
 end

@@ -57,7 +57,8 @@ page.
 
 ### Parameters:
 
- * `server`       - required - determines the program to execute for this service
+ * `server`       - optional - determines the program to execute for this service (either this or `redirect` is required)
+ * `redirect`     - optional - ip or hostname and port of the target service (either this or `server` is required)
  * `port`         - optional - determines the service port (required if service is not listed in `/etc/services`)
  * `cps`          - optional
  * `flags`        - optional
@@ -68,11 +69,13 @@ page.
  * `protocol`     - optional - defaults to "tcp"
  * `user`         - optional - defaults to "root"
  * `group`        - optional - defaults to "root"
+ * `use_default_group` - optional - set to "false" to prevent using the OS specific default group for the service, defaults to "true"
  * `instances`    - optional - defaults to "UNLIMITED"
  * `wait`         - optional - based on $protocol will default to "yes" for udp and "no" for tcp
  * `service_type` - optional - type setting in xinetd
  * `nice`         - optional - integer between -20 and 19, inclusive.
- * `redirect`     - optional - ip or hostname and port of the target service
+
+Either the `server` or the `redirect` parameter must be set.
 
 ### Sample Usage
 
@@ -86,6 +89,17 @@ xinetd::service { 'tftp':
   cps         => '100 2',
   flags       => 'IPv4',
   per_source  => '11',
+}
+```
+
+```puppet
+xinetd::service { 'ssh-tunnel-host.example.com':
+  port         => '2222',
+  redirect     => 'host.example.com 22',
+  flags        => 'REUSE',
+  service_type => 'UNLISTED',
+  bind         => "${::ipaddress_eth1}",
+  only_from    => '10.130.50.174',
 }
 ```
 
