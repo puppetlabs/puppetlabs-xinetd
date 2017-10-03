@@ -4,45 +4,43 @@
 # all parameters match up with xinetd.conf(5) man page
 #
 # Parameters:
-#   $ensure         - optional - defaults to 'present'
-#   $log_on_success - optional - may contain any combination of
-#                       'PID', 'HOST', 'USERID', 'EXIT', 'DURATION', 'TRAFFIC'
+#   $ensure                  - optional - defaults to 'present'
+#   $log_on_success          - optional - may contain any combination of
+#                            'PID', 'HOST', 'USERID', 'EXIT', 'DURATION', 'TRAFFIC'
 #   $log_on_success_operator - optional - defaults to '+='.  This is whether or
 #                              not values specified will be add, set or remove
 #                              from the default.
-#   $log_on_failure - optional - may contain any combination of
-#                       'HOST', 'USERID', 'ATTEMPT'
+#   $log_on_failure          - optional - may contain any combination of
+#                             'HOST', 'USERID', 'ATTEMPT'
 #   $log_on_failure_operator - optional - defaults to '+='.  This is whether or
 #                              not values specified will be add, set or remove
 #                              from the default.
-#   $service_type   - optional - type setting in xinetd
-#                       may contain any combinarion of 'RPC', 'INTERNAL',
-#                       'TCPMUX/TCPMUXPLUS', 'UNLISTED'
-#   $cps            - optional
-#   $flags          - optional
-#   $per_source     - optional
-#   $port           - optional - determines the service port (required if service is not listed in /etc/services)
-#   $server         - optional - determines the program to execute for this service
-#   $server_args    - optional
-#   $disable        - optional - defaults to "no"
-#   $socket_type    - optional - defaults to "stream"
-#   $protocol       - optional - defaults to "tcp"
-#   $user           - optional - defaults to "root"
-#   $group          - optional - defaults to "root"
-#   $use_default_group - optional - defaults to true
-#   $groups         - optional - defaults to "yes"
-#   $instances      - optional - defaults to "UNLIMITED"
-#   $only_from      - optional
-#   $wait           - optional - based on $protocol will default to "yes" for udp and "no" for tcp
-#   $xtype          - deprecated - use $service_type instead
-#   $no_access      - optional
-#   $access_times   - optional
-#   $log_type       - optional
-#   $bind           - optional
-#   $nice           - optional - integer between -20 and 19, inclusive.
-#   $env            - optional
-#   $passenv        - optional
-#   $redirect       - optional - ip or hostname and port of the target service
+#   $service_type            - optional - type setting in xinetd
+#                             may contain any combinarion of 'RPC', 'INTERNAL',
+#                             'TCPMUX/TCPMUXPLUS', 'UNLISTED'
+#   $cps                     - optional
+#   $flags                   - optional
+#   $per_source              - optional
+#   $port                    - optional - determines the service port (required if service is not listed in /etc/services)
+#   $server                  - optional - determines the program to execute for this service
+#   $server_args             - optional
+#   $disable                 - optional - defaults to "no"
+#   $socket_type             - optional - defaults to "stream"
+#   $protocol                - optional - defaults to "tcp"
+#   $user                    - optional - defaults to "root"
+#   $group                   - optional - defaults to "root"
+#   $use_default_group       - optional - defaults to true
+#   $groups                  - optional - defaults to "yes"
+#   $instances               - optional - defaults to "UNLIMITED"
+#   $only_from               - optional
+#   $wait                    - optional - based on $protocol will default to "yes" for udp and "no" for tcp
+#   $xtype                   - deprecated - use $service_type instead
+#   $no_access               - optional
+#   $access_times            - optional
+#   $log_type                - optional
+#   $bind                    - optional
+#   $nice                    - optional - integer between -20 and 19, inclusive.
+#   $redirect                - optional - ip or hostname and port of the target service
 #
 # Actions:
 #   setups up a xinetd service by creating a file in /etc/xinetd.d/
@@ -112,7 +110,7 @@ define xinetd::service (
     $_user = $xinetd::params::default_user
   }
 
-  if $group or bool2num($use_default_group) == 0 {
+  if $group or !$use_default_group {
     $_group = $group
   } else {
     $_group = $xinetd::params::default_group
