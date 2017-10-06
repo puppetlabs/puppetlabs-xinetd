@@ -93,7 +93,7 @@ xinetd::service { 'tftp':
 ```
 
 ```puppet
-xinetd::service { 'ssh-tunnel-host.example.com':
+xinetd::service { 'ssh-tunnel-host_example_com':
   port         => '2222',
   redirect     => 'host.example.com 22',
   flags        => 'REUSE',
