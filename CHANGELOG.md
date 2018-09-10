@@ -1,3 +1,13 @@
+## Unsupported Release 3.1.0
+### Summary
+This is a moderate release that serves to increases the maximum compatible version of stdlib from `5.0.0` to `6.0.0`.
+
+#### Changed
+- Maximum compatible version of stdlib changed from `5.0.0` to `6.0.0`.
+
+#### Fixed
+- Fix made to `xinetd::service` example within readme.
+
 ## Unsupported Release 3.0.0
 ### Summary
 This is a major release that removes support for Puppet 3.x and changes a default in manifests/service.pp
@@ -12,8 +22,8 @@ This is a major release that removes support for Puppet 3.x and changes a defaul
 - Puppet 4 & 5 support
 
 #### Changed
-  - Puppet version requirement lower bound to 4.7.1
-  - `$xinetd::service::server` now defaults to `undef`
+- Puppet version requirement lower bound to 4.7.1
+- `$xinetd::service::server` now defaults to `undef`
 
 #### Fixed
 - config template to supress unnecessary newlines
