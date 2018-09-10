@@ -1,6 +1,6 @@
 {
   "name": "puppetlabs-xinetd",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "author": "puppetlabs",
   "summary": "Configures xinetd and exposes the xinetd::service definition for adding new services.",
   "license": "Apache-2.0",
