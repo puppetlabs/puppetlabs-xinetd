@@ -1,3 +1,10 @@
+## Unsupported Release 3.2.0
+### Summary
+This is a moderate release that serves to increases the maximum compatible puppet version from `5.x` to `6.x`.
+
+#### Added
+- Maximum compatible puppet version has been increased from from `5.x` to `6.x`.
+
 ## Unsupported Release 3.1.0
 ### Summary
 This is a moderate release that serves to increases the maximum compatible version of stdlib from `5.0.0` to `6.0.0`.
