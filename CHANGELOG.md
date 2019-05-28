@@ -1,3 +1,10 @@
+## Unsupported Release 3.3.0
+### Summary
+This is a moderate release that removes stdlib dependency altogether as it isn't being used.
+
+#### Added
+- Update metadata.json to remove dependencies.
+
 ## Unsupported Release 3.2.0
 ### Summary
 This is a moderate release that serves to increases the maximum compatible puppet version from `5.x` to `6.x`.
