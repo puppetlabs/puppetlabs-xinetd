@@ -3,6 +3,7 @@
 class xinetd::params {
   $default_user   = 'root'
   $package_ensure = 'installed'
+  $service_ensure = 'running'
 
   case $::osfamily {
     'FreeBSD': { $default_group = 'wheel' }

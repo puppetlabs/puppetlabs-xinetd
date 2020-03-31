@@ -14,6 +14,7 @@ class xinetd (
   $conffile           = $xinetd::params::conffile,
   $package_name       = $xinetd::params::package_name,
   $package_ensure     = $xinetd::params::package_ensure,
+  $service_ensure     = $xinetd::params::service_ensure,
   $service_name       = $xinetd::params::service_name,
   $service_restart    = $xinetd::params::service_restart,
   $service_status     = $xinetd::params::service_status,
@@ -71,7 +72,7 @@ class xinetd (
   }
 
   service { $service_name:
-    ensure     => running,
+    ensure     => $service_ensure,
     enable     => true,
     hasrestart => $service_hasrestart,
     hasstatus  => $service_hasstatus,
