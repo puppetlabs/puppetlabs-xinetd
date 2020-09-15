@@ -1,3 +1,4 @@
+---
 HOSTS:
   ubuntu-1404-x64:
     roles:
@@ -8,3 +9,4 @@ HOSTS:
     box: puppetlabs/ubuntu-14.04-64-nocm
 CONFIG:
   type: foss
+...

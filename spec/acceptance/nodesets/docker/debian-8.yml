@@ -1,3 +1,5 @@
+---
+# yamllint disable rule:line-length
 HOSTS:
   debian-8-x64:
     platform: debian-8-amd64
@@ -9,3 +11,4 @@ HOSTS:
       - 'apt-get update && apt-get install -y net-tools wget locales strace lsof && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen'
 CONFIG:
   trace_limit: 200
+...
