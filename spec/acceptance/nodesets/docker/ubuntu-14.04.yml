@@ -1,3 +1,5 @@
+---
+# yamllint disable rule:line-length
 HOSTS:
   ubuntu-1404-x64:
     platform: ubuntu-14.04-amd64
@@ -10,3 +12,4 @@ HOSTS:
       - 'rm /usr/sbin/policy-rc.d && rm /sbin/initctl && dpkg-divert --rename --remove /sbin/initctl && apt-get update && apt-get install -y net-tools wget && locale-gen en_US.UTF-8'
 CONFIG:
   trace_limit: 200
+...
