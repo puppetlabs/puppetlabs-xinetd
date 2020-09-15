@@ -42,7 +42,6 @@ class xinetd (
   $banner_success     = undef,
   $purge_confdir      = undef,
 ) inherits xinetd::params {
-
   File {
     owner   => 'root',
     group   => '0',
