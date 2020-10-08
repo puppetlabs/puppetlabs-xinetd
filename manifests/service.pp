@@ -97,8 +97,7 @@ define xinetd::service (
   $passenv                          = undef,
   $redirect                         = undef,
 ) {
-
-  include ::xinetd
+  include xinetd
 
   unless ($server or $redirect) {
     fail('xinetd::service needs either of server or redirect')
@@ -166,5 +165,4 @@ define xinetd::service (
     notify  => Service[$xinetd::service_name],
     require => File[$xinetd::confdir],
   }
-
 }
