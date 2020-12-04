@@ -98,7 +98,7 @@ define xinetd::service (
   $redirect                         = undef,
 ) {
 
-  include ::xinetd
+  include xinetd
 
   unless ($server or $redirect) {
     fail('xinetd::service needs either of server or redirect')
