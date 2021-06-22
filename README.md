@@ -1,5 +1,4 @@
 # xinetd
-[![Build Status](https://travis-ci.org/puppetlabs/puppetlabs-xinetd.png)](https://travis-ci.org/puppetlabs/puppetlabs-xinetd)
 
 This is the xinetd module.
 
