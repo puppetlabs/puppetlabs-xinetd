@@ -3,6 +3,11 @@
 
 This is the xinetd module.
 
+> This module is supported by the Puppet community. We expect it to be of the same high
+> quality as our own Supported modules, but it does not qualify for Puppet Support plans.
+> See the `CODEOWNERS` file for usernames of the maintainers.
+
+
 ## Overview
 
 This module configures xinetd, and exposes the xinetd::service definition
@@ -24,7 +29,7 @@ package names and service needs.
  * `service_hasrestart`
  * `service_hasstatus`
 
-Additionally, all the global defaults in the main xinetd.conf can be set. By 
+Additionally, all the global defaults in the main xinetd.conf can be set. By
 default they are *not* set, allowing the internal xinetd defaults to be used:
 (see `man xinetd.conf` for full descriptions)
 
@@ -38,7 +43,7 @@ default they are *not* set, allowing the internal xinetd defaults to be used:
  * `max_load`       - Takes a floating point value as the load at which the service will stop accepting connections.
  * `cps`            - Takes two numbers to set a rate limit for incoming connections. The first number is the number of connections per second at which the service is disabled. The second number is the time in seconds before the service will be enabled again.
  * `instances`      - Determines the number of servers that can be simultaneously active for a service (the default is no limit).
- * `per_source`     - This specifies the maximum instances of this service per source IP address. 
+ * `per_source`     - This specifies the maximum instances of this service per source IP address.
  * `bind`           - Allows a service to be bound to a specific interface on the machine.
  * `mdns`           - On systems that support mdns registration of services (currently only Mac OS X), this will enable or disable registration of the service.
  * `v6only`         - Set to yes to use IPv6 only.
@@ -48,7 +53,7 @@ default they are *not* set, allowing the internal xinetd defaults to be used:
  * `umask`          - Sets the inherited umask for the service.
  * `banner`         - Takes the name of a file to be splatted at the remote host when a connection to that service is established.
  * `banner_fail`    - Takes the name of a file to be splatted at the remote host when a connection to that service is denied.
- * `banner_success` - Takes the name of a file to be splatted at the remote host when a connection to that service is granted. 
+ * `banner_success` - Takes the name of a file to be splatted at the remote host when a connection to that service is granted.
 
 ## Definition: xinetd::service
 
@@ -105,7 +110,7 @@ xinetd::service { 'ssh-tunnel-host_example_com':
 
 ## Supported OSes
 
-Supports Debian, FreeBSD, Suse, RedHat, and Amazon Linux OS Families. 
+Supports Debian, FreeBSD, Suse, RedHat, and Amazon Linux OS Families.
 
 
 
