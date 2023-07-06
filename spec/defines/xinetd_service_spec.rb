@@ -15,7 +15,7 @@ describe 'xinetd::service' do
 
   describe "ensure proper user/group are set in FreeBSD" do
     let :facts do
-      { :osfamily => 'FreeBSD' }
+      { :os => { :family => 'FreeBSD' } }
     end
 
     let :params do
@@ -29,7 +29,7 @@ describe 'xinetd::service' do
   end
 
   let :facts do
-    { :osfamily => 'Debian' }
+    { :os => { :family => 'Debian' } }
   end
 
   describe 'with default ensure' do

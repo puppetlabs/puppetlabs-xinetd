@@ -4,7 +4,7 @@ describe 'xinetd' do
 
   context 'When using default values' do
     let :facts do
-      { :osfamily => 'Debian' }
+      { :os => { :family => 'Debian' } }
     end
     it {
       should contain_package('xinetd')
@@ -39,7 +39,7 @@ describe 'xinetd' do
 
   context 'When overriding the default vaules' do
     let :facts do
-      { :osfamily => 'Debian' }
+      { :os => { :family => 'Debian' } }
     end
     let :params do
       { :enabled        => 'tftp nrpe',
@@ -93,7 +93,7 @@ describe 'xinetd' do
 
   context 'with defaults on Linux' do
     let :facts do
-      { :osfamily => 'Debian' }
+      { :os => { :family => 'Debian' } }
     end
     it {
       should contain_package('xinetd')
@@ -105,7 +105,7 @@ describe 'xinetd' do
 
   context 'with defaults on FreeBSD' do
     let :facts do
-      { :osfamily => 'FreeBSD' }
+      { :os => { :family => 'FreeBSD' } }
     end
     it {
       should contain_package('security/xinetd')
@@ -117,7 +117,7 @@ describe 'xinetd' do
 
   context 'with managed confdir' do
     let :facts do
-      { :osfamily => 'Debian' }
+      { :os => { :family => 'Debian' } }
     end
     let :params do
       { :purge_confdir => true }
