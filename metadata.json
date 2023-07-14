@@ -7,12 +7,22 @@
   "source": "https://github.com/puppetlabs/puppetlabs-xinetd",
   "project_page": "https://github.com/puppetlabs/puppetlabs-xinetd",
   "issues_url": "https://tickets.puppetlabs.com/browse/MODULES",
-  "description": "Puppet module to configure xinetd services",
+  "dependencies": [
+
+  ],
+  "operatingsystem_support": [
+    "RedHat based Linux",
+    "Debian based Linux",
+    "Windows"
+  ],
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.7.1 < 8.0.0"
+      "version_requirement": ">= 4.7.1 < 9.0.0"
     }
   ],
-  "dependencies": []
+  "description": "Puppet module to configure xinetd services",
+  "pdk-version": "3.0.0",
+  "template-url": "pdk-default#3.0.0",
+  "template-ref": "tags/3.0.0-0-g056e50d"
 }
