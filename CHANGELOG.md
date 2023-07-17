@@ -5,11 +5,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## Unreleased
+## [v3.4.0](https://github.com/puppetlabs/puppetlabs-xinetd/tree/v3.4.0) - 2023-07-17
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-xinetd/compare/v3.3.0...v3.4.0)
+
+### Added
 
 - Convert to PDK module and update for Puppet 8 [#125](https://github.com/puppetlabs/puppetlabs-xinetd/pull/125) ([nmburgan](https://github.com/nmburgan))
 - Mark compatible with Puppet 7 [#121](https://github.com/puppetlabs/puppetlabs-xinetd/pull/121) ([ekohl](https://github.com/ekohl))
+
+### Other
+
+- Add CHANGELOG.md [#128](https://github.com/puppetlabs/puppetlabs-xinetd/pull/128) ([nmburgan](https://github.com/nmburgan))
 - Release merge-back [#116](https://github.com/puppetlabs/puppetlabs-xinetd/pull/116) ([carabasdaniel](https://github.com/carabasdaniel))
+
 ## [v3.3.0](https://github.com/puppetlabs/puppetlabs-xinetd/tree/v3.3.0) - 2019-05-29
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-xinetd/compare/3.2.0...v3.3.0)
